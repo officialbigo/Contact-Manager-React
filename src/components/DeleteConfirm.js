@@ -2,8 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const DeleteConfirm = (props) => {
-  console.log(props.location.state);
-  //   const id = props.id;
+  const id = props.location.state.id;
   return (
     <div className="ui main">
       <h1>gap text . Needs to be fixed </h1>
@@ -13,7 +12,7 @@ const DeleteConfirm = (props) => {
       </div>
       <button
         className="ui button green"
-        // onClick={() => props.deleteContactHandler(id)}
+        onClick={() => props.deleteContactHandler(id)}
       >
         Yes
       </button>
