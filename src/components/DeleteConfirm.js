@@ -17,7 +17,6 @@ const DeleteConfirm = (props) => {
         >
           Yes
         </button>
-        {/* </Link> */}
         <Link to="/">
           <button className="ui fluid button red">No</button>
         </Link>
