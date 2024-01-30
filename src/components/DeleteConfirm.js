@@ -11,7 +11,6 @@ const DeleteConfirm = (props) => {
       <h1>gap text . Needs to be fixed </h1>
       <div className="ui card centered">
         <h2>Are you sure you want to delete this contact</h2>
-        {/* <Link to="/" state={{}}> */}
         <button
           className="ui fluid button green"
           onClick={() => props.deleteContactHandler(id)}
