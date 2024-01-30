@@ -9,6 +9,23 @@ import DeleteConfirm from "./DeleteConfirm";
 
 function App() {
   const [contacts, setContacts] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchresults] = useState([]);
+  const returnSearchResult = (searchTerm) => {
+    setSearchTerm(searchTerm);
+    if (searchTerm !== "") {
+      const newContactList = contacts.filter((contact) => {
+        // return
+        return Object.values(contact)
+          .join(" ")
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase());
+      });
+      setSearchresults(newContactList);
+    } else {
+      setSearchresults(contacts);
+    }
+  };
   const addContactHandler = (contact) => {
     setContacts([...contacts, { id: crypto.randomUUID(), ...contact }]);
   };
@@ -35,30 +52,27 @@ function App() {
           <Route
             exact
             path="/add"
-            // render={(props) => (
-            //   <AddContact {...props} addContactHandler={addContactHandler} />
-            // )}
             element={<AddContact addContactHandler={addContactHandler} />}
           />
           <Route
             exact
             path="/"
-            // render={(props) => (
-            //   <ContactList
-            //     {...props}
-            //     contacts={contacts}
-            //     deleteContactHandler={deleteContactHandler}
-            //   />
-            // )}
             element={
               <ContactList
-                contacts={contacts}
-                deleteContactHandler={deleteContactHandler}
+                contacts={searchTerm.length < 1 ? contacts : searchResults}
+                searchTerm={searchTerm}
+                returnSearchResult={returnSearchResult}
               />
             }
           />
           <Route exact path="/contact/:id" element={<ContactDetails />} />
-          <Route exact path="/deleteConfirm" element={<DeleteConfirm />} />
+          <Route
+            exact
+            path="/deleteConfirm"
+            element={
+              <DeleteConfirm deleteContactHandler={deleteContactHandler} />
+            }
+          />
         </Routes>
       </Router>
     </div>
