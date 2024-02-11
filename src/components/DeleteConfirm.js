@@ -1,24 +1,36 @@
 import React from "react";
 import user from "../images/contact_user.png";
 
-import { Link, useLocation } from "react-router-dom";
-
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import HeaderNew from "./HeaderNew";
 const DeleteConfirm = (props) => {
   const prop = useLocation().state;
   const { id, name, number, email } = prop.contact;
+  const navigate = useNavigate();
+  const goToRoute = (route) => {
+    navigate(route);
+  };
+  const deleteContactHandler = (id) => {
+    props.deleteContactHandler(id);
+    goToRoute("/user");
+  };
   return (
     <div className="ui main">
-      <h1>gap text . Needs to be fixed </h1>
+      <HeaderNew />
+      <div style={{ margin: "50px" }}></div>{" "}
       <div className="ui card centered">
         <h2>Are you sure you want to delete this contact</h2>
         <button
           className="ui fluid button green"
-          onClick={() => props.deleteContactHandler(id)}
+          style={{ cursor: "pointer" }}
+          onClick={() => deleteContactHandler(id)}
         >
           Yes
         </button>
-        <Link to="/">
-          <button className="ui fluid button red">No</button>
+        <Link to="/user">
+          <button className="ui fluid button red" style={{ cursor: "pointer" }}>
+            No
+          </button>
         </Link>
       </div>
       <div className="ui main">

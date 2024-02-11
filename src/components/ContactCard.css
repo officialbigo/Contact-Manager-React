@@ -1,0 +1,18 @@
+/* ContactCard.css */
+.item {
+  /* Your regular styles for the item */
+  transition: transform 0.3s ease; /* Add a smooth transition for the transform property */
+}
+
+.item:hover {
+  transform: scale(1.05); /* Scale up the item on hover */
+}
+
+/* Optional: Add hover styles for the trash and edit icons */
+.item:hover .trash.alternate.outline.icon {
+  color: darkred;
+}
+
+.item:hover .edit.alternate.outline.icon {
+  color: darkblue;
+}

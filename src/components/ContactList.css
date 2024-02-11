@@ -1,0 +1,12 @@
+/* YourComponent.css */
+.box-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10000vh;
+  margin: 20px; /* Add margin for spacing around the box */
+  padding: 20px; /* Add padding for spacing inside the box */
+  border: 2px solid #ccc; /* Add border styling */
+  border-radius: 8px; /* Optional: Add border-radius for rounded corners */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add box shadow for a subtle effect */
+}
