@@ -28,14 +28,11 @@ function App() {
     if (authToken !== "") {
       localStorage.setItem("authToken", JSON.stringify(authToken));
       // console.log(authToken);
-      Axios.get(
-        "https://contact-manager-backend-00x5.onrender.com/api/users/user",
-        {
-          headers: {
-            Authorization: `Bearer ${authToken}`,
-          },
-        }
-      )
+      Axios.get("/api/users/user", {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+      })
         .then((res) => {
           const user_id = res.data.id;
           const user_email = res.data.email;

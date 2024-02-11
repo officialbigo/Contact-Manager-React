@@ -29,10 +29,7 @@ const UserLogin = (props) => {
     }));
   };
   const handleSubmit = () => {
-    Axios.post(
-      "https://contact-manager-backend-00x5.onrender.com/api/users/login",
-      formVal
-    )
+    Axios.post("/api/users/login", formVal)
       .then((res) => {
         const givenToken = res.data.accessToken;
         props.changeAuthToken(givenToken);
