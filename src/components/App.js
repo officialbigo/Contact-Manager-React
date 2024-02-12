@@ -42,14 +42,11 @@ function App() {
         .catch((err) => {
           alert(err);
         });
-      Axios.get(
-        "https://contact-manager-backend-00x5.onrender.com/api/contacts",
-        {
-          headers: {
-            Authorization: `Bearer ${authToken}`,
-          },
-        }
-      )
+      Axios.get("/api/contacts", {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+      })
         .then((res) => {
           let i = 0;
           const initialContacts = [];
@@ -93,15 +90,11 @@ function App() {
     }
   };
   const addContactHandler = (contact) => {
-    Axios.post(
-      "https://contact-manager-backend-00x5.onrender.com/api/contacts",
-      contact,
-      {
-        headers: {
-          Authorization: `Bearer ${authToken}`,
-        },
-      }
-    )
+    Axios.post("/api/contacts", contact, {
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+      },
+    })
       .then((res) => {
         const id = res.data._id;
         const { name, number, email } = res.data;
@@ -113,14 +106,11 @@ function App() {
   };
 
   const deleteContactHandler = (id) => {
-    Axios.delete(
-      `https://contact-manager-backend-00x5.onrender.com/api/contacts/${id}`,
-      {
-        headers: {
-          Authorization: `Bearer ${authToken}`,
-        },
-      }
-    ).catch((err) => {
+    Axios.delete(`/api/contacts/${id}`, {
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+      },
+    }).catch((err) => {
       alert(err);
     });
     const new_contacts = contacts.filter((contact) => {
@@ -134,15 +124,11 @@ function App() {
       number: updatedContact.number,
       email: updatedContact.email,
     };
-    Axios.put(
-      `https://contact-manager-backend-00x5.onrender.com/api/contacts/${updatedContact.id}`,
-      inputContact,
-      {
-        headers: {
-          Authorization: `Bearer ${authToken}`,
-        },
-      }
-    )
+    Axios.put(`/api/contacts/${updatedContact.id}`, inputContact, {
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+      },
+    })
       .then((res) => {
         const id = res.data._id;
         const { name, number, email } = res.data;
