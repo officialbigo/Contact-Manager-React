@@ -17,7 +17,10 @@ const RegisterUser = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    Axios.post("/api/users/register", formData)
+    Axios.post(
+      "https://contact-manager-backend-z9p3.onrender.com/api/users/register",
+      formData
+    )
       .then((res) => {
         alert(`New user ${res.data.name} created.`);
         setFormData({
