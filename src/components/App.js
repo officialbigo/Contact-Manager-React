@@ -28,14 +28,11 @@ function App() {
     if (authToken !== "") {
       localStorage.setItem("authToken", JSON.stringify(authToken));
       // console.log(authToken);
-      Axios.get(
-        "https://contact-manager-backend-z9p3.onrender.com/api/users/user",
-        {
-          headers: {
-            Authorization: `Bearer ${authToken}`,
-          },
-        }
-      )
+      Axios.get("http://localhost:5001/api/users/user", {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+      })
         .then((res) => {
           const user_id = res.data.id;
           const user_email = res.data.email;
@@ -45,14 +42,11 @@ function App() {
         .catch((err) => {
           alert(err);
         });
-      Axios.get(
-        "https://contact-manager-backend-z9p3.onrender.com/api/contacts",
-        {
-          headers: {
-            Authorization: `Bearer ${authToken}`,
-          },
-        }
-      )
+      Axios.get("http://localhost:5001/api/contacts", {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+      })
         .then((res) => {
           let i = 0;
           const initialContacts = [];
@@ -96,15 +90,11 @@ function App() {
     }
   };
   const addContactHandler = (contact) => {
-    Axios.post(
-      "https://contact-manager-backend-z9p3.onrender.com/api/contacts",
-      contact,
-      {
-        headers: {
-          Authorization: `Bearer ${authToken}`,
-        },
-      }
-    )
+    Axios.post("http://localhost:5001/api/contacts", contact, {
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+      },
+    })
       .then((res) => {
         const id = res.data._id;
         const { name, number, email } = res.data;
@@ -116,14 +106,11 @@ function App() {
   };
 
   const deleteContactHandler = (id) => {
-    Axios.delete(
-      `https://contact-manager-backend-z9p3.onrender.com/api/contacts/${id}`,
-      {
-        headers: {
-          Authorization: `Bearer ${authToken}`,
-        },
-      }
-    ).catch((err) => {
+    Axios.delete(`http://localhost:5001/api/contacts/${id}`, {
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+      },
+    }).catch((err) => {
       alert(err);
     });
     const new_contacts = contacts.filter((contact) => {
@@ -138,7 +125,7 @@ function App() {
       email: updatedContact.email,
     };
     Axios.put(
-      `https://contact-manager-backend-z9p3.onrender.com/api/contacts/${updatedContact.id}`,
+      `http://localhost:5001/api/contacts/${updatedContact.id}`,
       inputContact,
       {
         headers: {
