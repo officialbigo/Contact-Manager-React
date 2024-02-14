@@ -28,7 +28,7 @@ function App() {
     if (authToken !== "") {
       localStorage.setItem("authToken", JSON.stringify(authToken));
       // console.log(authToken);
-      Axios.get("/api/users/user", {
+      Axios.get("http://localhost:5001/api/users/user", {
         headers: {
           Authorization: `Bearer ${authToken}`,
         },
@@ -42,7 +42,7 @@ function App() {
         .catch((err) => {
           alert(err);
         });
-      Axios.get("/api/contacts", {
+      Axios.get("http://localhost:5001/api/contacts", {
         headers: {
           Authorization: `Bearer ${authToken}`,
         },
@@ -90,7 +90,7 @@ function App() {
     }
   };
   const addContactHandler = (contact) => {
-    Axios.post("/api/contacts", contact, {
+    Axios.post("http://localhost:5001/api/contacts", contact, {
       headers: {
         Authorization: `Bearer ${authToken}`,
       },
@@ -106,7 +106,7 @@ function App() {
   };
 
   const deleteContactHandler = (id) => {
-    Axios.delete(`/api/contacts/${id}`, {
+    Axios.delete(`http://localhost:5001/api/contacts/${id}`, {
       headers: {
         Authorization: `Bearer ${authToken}`,
       },
@@ -124,11 +124,15 @@ function App() {
       number: updatedContact.number,
       email: updatedContact.email,
     };
-    Axios.put(`/api/contacts/${updatedContact.id}`, inputContact, {
-      headers: {
-        Authorization: `Bearer ${authToken}`,
-      },
-    })
+    Axios.put(
+      `http://localhost:5001/api/contacts/${updatedContact.id}`,
+      inputContact,
+      {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+      }
+    )
       .then((res) => {
         const id = res.data._id;
         const { name, number, email } = res.data;

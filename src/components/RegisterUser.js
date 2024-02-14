@@ -17,7 +17,7 @@ const RegisterUser = () => {
   // localhost:5001/api/users/register
   const handleSubmit = (e) => {
     e.preventDefault();
-    Axios.post("/api/users/register", formData)
+    Axios.post("http://localhost:5001/api/users/register", formData)
       .then((res) => {
         alert(`New user ${res.data.name} created.`);
         setFormData({
