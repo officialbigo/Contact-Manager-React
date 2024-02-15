@@ -17,8 +17,8 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchresults] = useState([]);
   const [authToken, setAuthToken] = useState("");
-  const [userEmail, setUserEmail] = useState("");
-  const [userId, setUserId] = useState("");
+  // const [userEmail, setUserEmail] = useState("");
+  // const [userId, setUserId] = useState("");
 
   const changeAuthToken = (token) => {
     setAuthToken(token);
@@ -27,24 +27,23 @@ function App() {
   useEffect(() => {
     if (authToken !== "") {
       localStorage.setItem("authToken", JSON.stringify(authToken));
-      // console.log(authToken);
-      Axios.get(
-        "http://contact-manager-backend-env-1.eba-ukwyne2h.ap-south-1.elasticbeanstalk.com/api/users/user",
-        {
-          headers: {
-            Authorization: `Bearer ${authToken}`,
-          },
-        }
-      )
-        .then((res) => {
-          const user_id = res.data.id;
-          const user_email = res.data.email;
-          setUserEmail(user_email);
-          setUserId(user_id);
-        })
-        .catch((err) => {
-          alert(err);
-        });
+      // Axios.get(
+      //   "http://contact-manager-backend-env-1.eba-ukwyne2h.ap-south-1.elasticbeanstalk.com/api/users/user",
+      //   {
+      //     headers: {
+      //       Authorization: `Bearer ${authToken}`,
+      //     },
+      //   }
+      // )
+      //   .then((res) => {
+      //     const user_id = res.data.id;
+      //     const user_email = res.data.email;
+      //     setUserEmail(user_email);
+      //     setUserId(user_id);
+      //   })
+      //   .catch((err) => {
+      //     alert(err);
+      //   });
       Axios.get(
         "https://contact-manager-backend-env-1.eba-ukwyne2h.ap-south-1.elasticbeanstalk.com/api/contacts",
         {
@@ -54,13 +53,15 @@ function App() {
         }
       )
         .then((res) => {
-          let i = 0;
-          const initialContacts = [];
-          for (i = 0; i < res.data.length; i++) {
-            const id = res.data[i]._id;
-            let { name, number, email } = res.data[i];
-            initialContacts.push({ id, name, number, email });
-          }
+          const initialContacts = res.data.map(
+            ({ _id, name, number, email }) => ({
+              id: _id,
+              name,
+              number,
+              email,
+            })
+          );
+
           setContacts(initialContacts);
         })
         .catch((err) => {
@@ -106,9 +107,15 @@ function App() {
       }
     )
       .then((res) => {
-        const id = res.data._id;
-        const { name, number, email } = res.data;
-        setContacts([...contacts, { id, name, number, email }]);
+        setContacts((prevContacts) => [
+          ...prevContacts,
+          {
+            id: res.data._id,
+            name: res.data.name,
+            number: res.data.number,
+            email: res.data.email,
+          },
+        ]);
       })
       .catch((err) => {
         alert("Please enter all fields", err);
