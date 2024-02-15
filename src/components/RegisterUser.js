@@ -17,7 +17,10 @@ const RegisterUser = () => {
   // localhost:5001/api/users/register
   const handleSubmit = (e) => {
     e.preventDefault();
-    Axios.post("http://localhost:5001/api/users/register", formData)
+    Axios.post(
+      "http://contact-manager-backend-env-1.eba-ukwyne2h.ap-south-1.elasticbeanstalk.com/api/users/register",
+      formData
+    )
       .then((res) => {
         alert(`New user ${res.data.name} created.`);
         setFormData({

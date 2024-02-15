@@ -29,7 +29,10 @@ const UserLogin = (props) => {
     }));
   };
   const handleSubmit = () => {
-    Axios.post("http://localhost:5001/api/users/login", formVal)
+    Axios.post(
+      "http://contact-manager-backend-env-1.eba-ukwyne2h.ap-south-1.elasticbeanstalk.com/api/users/login",
+      formVal
+    )
       .then((res) => {
         const givenToken = res.data.accessToken;
         props.changeAuthToken(givenToken);
