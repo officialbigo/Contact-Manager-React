@@ -46,7 +46,7 @@ function App() {
           alert(err);
         });
       Axios.get(
-        "http://contact-manager-backend-env-1.eba-ukwyne2h.ap-south-1.elasticbeanstalk.com/api/contacts",
+        "https://contact-manager-backend-env-1.eba-ukwyne2h.ap-south-1.elasticbeanstalk.com/api/contacts",
         {
           headers: {
             Authorization: `Bearer ${authToken}`,

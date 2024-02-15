@@ -34,9 +34,11 @@ const UserLogin = (props) => {
       formVal
     )
       .then((res) => {
-        const givenToken = res.data.accessToken;
-        props.changeAuthToken(givenToken);
-        goToRoute("/user");
+        const { email, password } = res.data;
+        console.log("recieved", email, password);
+        // const givenToken = res.data.accessToken;
+        // props.changeAuthToken(givenToken);
+        // goToRoute("/user");
       })
       .catch((err) => {
         const error = err.response.status;
