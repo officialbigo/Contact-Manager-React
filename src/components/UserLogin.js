@@ -34,8 +34,9 @@ const UserLogin = (props) => {
       formVal
     )
       .then((res) => {
-        const { email, password, msg } = res.data;
-        console.log("recieved", email, password, msg);
+        // const { email, password, msg } = res.data;
+        console.log(res.data);
+        // console.log("recieved", email, password, msg);
         // const givenToken = res.data.accessToken;
         // props.changeAuthToken(givenToken);
         // goToRoute("/user");
