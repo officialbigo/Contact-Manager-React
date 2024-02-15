@@ -28,7 +28,7 @@ function App() {
     if (authToken !== "") {
       localStorage.setItem("authToken", JSON.stringify(authToken));
       // Axios.get(
-      //   "http://contact-manager-backend-env-1.eba-ukwyne2h.ap-south-1.elasticbeanstalk.com/api/users/user",
+      //   "https://contact-manager-backend-uxzr.onrender.com/api/users/user",
       //   {
       //     headers: {
       //       Authorization: `Bearer ${authToken}`,
@@ -45,7 +45,7 @@ function App() {
       //     alert(err);
       //   });
       Axios.get(
-        "http://contact-manager-backend-env-1.eba-ukwyne2h.ap-south-1.elasticbeanstalk.com/api/contacts",
+        "https://contact-manager-backend-uxzr.onrender.com/api/contacts",
         {
           headers: {
             Authorization: `Bearer ${authToken}`,
@@ -98,7 +98,7 @@ function App() {
   };
   const addContactHandler = (contact) => {
     Axios.post(
-      "http://contact-manager-backend-env-1.eba-ukwyne2h.ap-south-1.elasticbeanstalk.com/api/contacts",
+      "https://contact-manager-backend-uxzr.onrender.com/api/contacts",
       contact,
       {
         headers: {
@@ -124,7 +124,7 @@ function App() {
 
   const deleteContactHandler = (id) => {
     Axios.delete(
-      `http://contact-manager-backend-env-1.eba-ukwyne2h.ap-south-1.elasticbeanstalk.com/api/contacts/${id}`,
+      `https://contact-manager-backend-uxzr.onrender.com/api/contacts/${id}`,
       {
         headers: {
           Authorization: `Bearer ${authToken}`,
@@ -145,7 +145,7 @@ function App() {
       email: updatedContact.email,
     };
     Axios.put(
-      `http://contact-manager-backend-env-1.eba-ukwyne2h.ap-south-1.elasticbeanstalk.com/api/contacts/${updatedContact.id}`,
+      `https://contact-manager-backend-uxzr.onrender.com/api/contacts/${updatedContact.id}`,
       inputContact,
       {
         headers: {

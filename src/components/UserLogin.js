@@ -30,7 +30,7 @@ const UserLogin = (props) => {
   };
   const handleSubmit = () => {
     Axios.post(
-      "http://contact-manager-backend-env-1.eba-ukwyne2h.ap-south-1.elasticbeanstalk.com/api/users/login",
+      "https://contact-manager-backend-uxzr.onrender.com/api/users/login",
       formVal
     )
       .then((res) => {
