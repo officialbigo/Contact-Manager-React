@@ -53,6 +53,7 @@ const UserLogin = (props) => {
       <Grid columns={2} relaxed="very" stackable>
         <GridColumn>
           <Form onSubmit={handleSubmit}>
+            <h3>Email</h3>
             <FormInput
               icon="user"
               iconPosition="left"
@@ -62,6 +63,7 @@ const UserLogin = (props) => {
               value={formVal.email}
               onChange={onValueChange}
             />
+            <h3>Password</h3>
             <FormInput
               icon="lock"
               iconPosition="left"
