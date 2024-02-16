@@ -13,6 +13,7 @@ import {
 import HeaderNew from "./HeaderNew";
 
 const UserLogin = (props) => {
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const goToRoute = (route) => {
     navigate(route);
@@ -29,6 +30,7 @@ const UserLogin = (props) => {
     }));
   };
   const handleSubmit = () => {
+    setLoading(true);
     Axios.post(
       "https://contact-manager-backend-uxzr.onrender.com/api/users/login",
       formVal
@@ -45,6 +47,9 @@ const UserLogin = (props) => {
         } else if (error === 401) {
           alert("Invalid email or password", err);
         }
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
   return (
@@ -53,7 +58,7 @@ const UserLogin = (props) => {
       <Grid columns={2} relaxed="very" stackable>
         <GridColumn>
           <Form onSubmit={handleSubmit}>
-            <h3>Email</h3>
+            <h3 style={{ textAlign: "center" }}>Email</h3>
             <FormInput
               icon="user"
               iconPosition="left"
@@ -63,7 +68,7 @@ const UserLogin = (props) => {
               value={formVal.email}
               onChange={onValueChange}
             />
-            <h3>Password</h3>
+            <h3 style={{ textAlign: "center" }}>Password</h3>
             <FormInput
               icon="lock"
               iconPosition="left"
@@ -72,7 +77,12 @@ const UserLogin = (props) => {
               value={formVal.password}
               onChange={onValueChange}
             />
-            <Button content="Login" primary style={{ cursor: "pointer" }} />
+            <Button
+              content="Login"
+              primary
+              style={{ cursor: "pointer" }}
+              disabled={loading}
+            />
           </Form>
         </GridColumn>
 

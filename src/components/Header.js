@@ -7,9 +7,8 @@ const Header = (props) => {
     navigate(route);
   };
   const logout = () => {
-    goToRoute("/");
     props.logout();
-    alert("Logged out", props.authToken);
+    goToRoute("/");
   };
 
   return (

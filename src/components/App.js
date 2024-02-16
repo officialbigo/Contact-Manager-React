@@ -169,6 +169,7 @@ function App() {
   };
   const logout = () => {
     setAuthToken("");
+    alert("Logged out", authToken);
   };
   return (
     <div>

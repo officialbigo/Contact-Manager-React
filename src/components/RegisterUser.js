@@ -4,19 +4,19 @@ import { useNavigate } from "react-router-dom";
 import { FormInput, Button, Form } from "semantic-ui-react";
 import HeaderNew from "./HeaderNew";
 const RegisterUser = () => {
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
   });
   const navigate = useNavigate();
-
   const goToRoute = (route) => {
     navigate(route);
   };
-  // localhost:5001/api/users/register
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
     Axios.post(
       "https://contact-manager-backend-uxzr.onrender.com/api/users/register",
       formData
@@ -37,6 +37,9 @@ const RegisterUser = () => {
         } else if (error === 401) {
           alert("User with entered eamil exists!");
         }
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
   const onValueChange = (e) => {
@@ -78,12 +81,11 @@ const RegisterUser = () => {
             value={formData.password}
             onChange={onValueChange}
           />
-          {/* <Link to="/user"> */}
-          {/* </Link> */}
           <Button
             className="ui button green"
             type="submit"
             style={{ cursor: "pointer" }}
+            disabled={loading}
           >
             Register
           </Button>
