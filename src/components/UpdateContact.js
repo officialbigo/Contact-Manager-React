@@ -24,8 +24,12 @@ const UpdateContact = (props) => {
     navigate(route);
   };
   const updateContactHandler = (id) => {
-    props.updateContactHandler({ id, ...newContact });
-    goToRoute("/user");
+    if (!newContact.name || !newContact.number || !newContact.email) {
+      alert("Please enter all fields");
+    } else {
+      props.updateContactHandler({ id, ...newContact });
+      goToRoute("/user");
+    }
   };
   return (
     <div className="ui main">
