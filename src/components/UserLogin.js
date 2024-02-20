@@ -84,6 +84,37 @@ const UserLogin = (props) => {
               disabled={loading}
             />
           </Form>
+          <div style={{ margin: "20px" }}></div>
+          <button
+            className="ui button blue"
+            style={{ justifyContent: "center" }}
+            onClick={() => {
+              setFormVal({ email: "sample@gmail.com", password: "sample" });
+              setLoading(true);
+              Axios.post(
+                "https://contact-manager-backend-uxzr.onrender.com/api/users/login",
+                formVal
+              )
+                .then((res) => {
+                  const givenToken = res.data.accessToken;
+                  props.changeAuthToken(givenToken);
+                  goToRoute("/user");
+                })
+                .catch((err) => {
+                  const error = err.response.status;
+                  if (error === 400) {
+                    alert("All fields are mandatory");
+                  } else if (error === 401) {
+                    alert("Invalid email or password", err);
+                  }
+                })
+                .finally(() => {
+                  setLoading(false);
+                });
+            }}
+          >
+            Sample account
+          </button>
         </GridColumn>
 
         <GridColumn verticalAlign="middle">
@@ -99,6 +130,7 @@ const UserLogin = (props) => {
       </Grid>
 
       <Divider vertical>Or</Divider>
+      <div className="ui container"></div>
     </Segment>
   );
 };
