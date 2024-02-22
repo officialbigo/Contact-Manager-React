@@ -77,12 +77,13 @@ const UserLogin = (props) => {
               value={formVal.password}
               onChange={onValueChange}
             />
-            <button
-              className={`ui button blue ${loading ? "loading" : ""}`}
+            <Button
+              content="Login"
+              primary
+              loading={loading}
               style={{ cursor: "pointer" }}
-            >
-              {loading ? null : "Login"}
-            </button>
+              disabled={loading}
+            />
           </Form>
           <div style={{ margin: "20px" }}></div>
           <button
