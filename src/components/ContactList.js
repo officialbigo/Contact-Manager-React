@@ -12,17 +12,17 @@ const ContactList = (props) => {
       <Header logout={props.logout} authToken={props.authToken} />
       <div style={{ margin: "50px" }}></div>{" "}
       <div style={{ marginBottom: "20px" }}>
-        <h2>Contact List</h2>
+        <h2 style={{ margin: "0 30px" }}>Contact List</h2>
         <Link to="/add">
           <button
             className="ui button green"
-            style={{ cursor: "pointer", margin: "0 20px" }}
+            style={{ cursor: "pointer", margin: "0 30px" }}
           >
             Add Contact
           </button>
         </Link>
       </div>
-      <div className="ui icon input" style={{ margin: "0 20px" }}>
+      <div className="ui icon input" style={{ margin: "0 30px" }}>
         <input
           ref={searchRef}
           type="text"
@@ -35,7 +35,7 @@ const ContactList = (props) => {
         />
         <i className="search icon" style={{ cursor: "pointer" }}></i>
       </div>
-      <div style={{ margin: "0 20px" }}>
+      <div style={{ margin: "0 30px" }}>
         <div className="ui celled list">
           {renderContactList.length > 0
             ? renderContactList
