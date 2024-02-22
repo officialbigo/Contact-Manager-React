@@ -32,7 +32,7 @@ const ContactList = (props) => {
         />
         <i className="search icon" style={{ cursor: "pointer" }}></i>
       </div>
-      <div className="ui celled list">
+      <div className="ui celled list" style={{ margin: "0 20px" }}>
         {renderContactList.length > 0
           ? renderContactList
           : "No contacts in list"}
