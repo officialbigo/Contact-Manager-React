@@ -35,7 +35,7 @@ const RegisterUser = () => {
         if (error === 400) {
           alert("All fields are mandatory!");
         } else if (error === 401) {
-          alert("User with entered eamil exists!");
+          alert("User with entered email exists!");
         }
       })
       .finally(() => {
