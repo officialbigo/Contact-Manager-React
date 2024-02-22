@@ -85,6 +85,7 @@ const RegisterUser = () => {
             className="ui button green"
             type="submit"
             style={{ cursor: "pointer" }}
+            loading={loading}
             disabled={loading}
           >
             Register
