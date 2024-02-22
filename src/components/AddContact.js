@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import user from "../images/contact_user.png";
 
 const AddContact = (props) => {
   const [newContact, setNewContact] = useState({
@@ -27,44 +28,49 @@ const AddContact = (props) => {
   return (
     <div className="ui main">
       <h1>Add Contact</h1>
-      <form className="ui form" onSubmit={add}>
-        <div className="field">
-          <label>Name</label>
-          <input
-            type="text"
-            name="name"
-            placeholder="Name"
-            value={newContact.name}
-            onChange={onValueChange}
-          />
+      <div className="ui card centered">
+        <div className="image">
+          <img className="ui centered image" src={user} alt="user" />
         </div>
+        <form className="ui form" onSubmit={add}>
+          <div className="field">
+            <label>Name</label>
+            <input
+              type="text"
+              name="name"
+              placeholder="Name"
+              value={newContact.name}
+              onChange={onValueChange}
+            />
+          </div>
 
-        <div className="field">
-          <label>Number</label>
-          <input
-            type="number"
-            name="number"
-            placeholder="Number"
-            value={newContact.number}
-            onChange={onValueChange}
-          />
-        </div>
+          <div className="field">
+            <label>Number</label>
+            <input
+              type="number"
+              name="number"
+              placeholder="Number"
+              value={newContact.number}
+              onChange={onValueChange}
+            />
+          </div>
 
-        <div className="field">
-          <label>Email</label>
-          <input
-            type="text"
-            name="email"
-            placeholder="Email"
-            value={newContact.email}
-            onChange={onValueChange}
-          />
-        </div>
+          <div className="field">
+            <label>Email</label>
+            <input
+              type="text"
+              name="email"
+              placeholder="Email"
+              value={newContact.email}
+              onChange={onValueChange}
+            />
+          </div>
 
-        <button className="ui button blue" style={{ cursor: "pointer" }}>
-          Add
-        </button>
-      </form>
+          <button className="ui button blue" style={{ cursor: "pointer" }}>
+            Add
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

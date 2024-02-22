@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import ContactCard from "./ContactCard";
 import Header from "./Header";
+import { Button, Icon } from "semantic-ui-react";
 const ContactList = (props) => {
   const searchRef = useRef("");
   const renderContactList = props.contacts.map((contact) => {
@@ -13,14 +14,6 @@ const ContactList = (props) => {
       <div style={{ margin: "50px" }}></div>{" "}
       <div style={{ marginBottom: "20px" }}>
         <h2 style={{ margin: "0 30px" }}>Contact List</h2>
-        <Link to="/add">
-          <button
-            className="ui button green"
-            style={{ cursor: "pointer", margin: "0 30px" }}
-          >
-            Add Contact
-          </button>
-        </Link>
       </div>
       <div className="ui icon input" style={{ margin: "0 30px" }}>
         <input
@@ -35,6 +28,11 @@ const ContactList = (props) => {
         />
         <i className="search icon" style={{ cursor: "pointer" }}></i>
       </div>
+      <Link to="/add">
+        <Button icon className="box-icon-button positive">
+          <Icon name="plus" />
+        </Button>
+      </Link>
       <div style={{ margin: "0 30px" }}>
         <div className="ui celled list">
           {renderContactList.length > 0
