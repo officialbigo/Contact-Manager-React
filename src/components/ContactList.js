@@ -33,6 +33,7 @@ const ContactList = (props) => {
           <Icon name="plus" />
         </Button>
       </Link>
+      <div style={{ margin: "20px" }}></div>
       <div style={{ margin: "0 30px" }}>
         <div className="ui celled list">
           {renderContactList.length > 0

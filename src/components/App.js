@@ -1,7 +1,7 @@
 import Axios from "axios";
+import "./App.css";
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import "./App.css";
 import ContactList from "./ContactList";
 import ContactDetails from "./ContactDetails";
 import DeleteConfirm from "./DeleteConfirm";
@@ -17,8 +17,6 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchresults] = useState([]);
   const [authToken, setAuthToken] = useState("");
-  // const [userEmail, setUserEmail] = useState("");
-  // const [userId, setUserId] = useState("");
 
   const changeAuthToken = (token) => {
     setAuthToken(token);
