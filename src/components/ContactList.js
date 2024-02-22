@@ -14,12 +14,15 @@ const ContactList = (props) => {
       <div style={{ marginBottom: "20px" }}>
         <h2>Contact List</h2>
         <Link to="/add">
-          <button className="ui button green" style={{ cursor: "pointer" }}>
+          <button
+            className="ui button green"
+            style={{ cursor: "pointer", margin: "0 20px" }}
+          >
             Add Contact
           </button>
         </Link>
       </div>
-      <div className="ui icon input">
+      <div className="ui icon input" style={{ margin: "0 20px" }}>
         <input
           ref={searchRef}
           type="text"
@@ -32,10 +35,12 @@ const ContactList = (props) => {
         />
         <i className="search icon" style={{ cursor: "pointer" }}></i>
       </div>
-      <div className="ui celled list" style={{ margin: "0 20px" }}>
-        {renderContactList.length > 0
-          ? renderContactList
-          : "No contacts in list"}
+      <div style={{ margin: "0 20px" }}>
+        <div className="ui celled list">
+          {renderContactList.length > 0
+            ? renderContactList
+            : "No contacts in list"}
+        </div>
       </div>
     </div>
   );
