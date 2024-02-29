@@ -43,7 +43,7 @@ function App() {
       //     alert(err);
       //   });
       Axios.get(
-        "https://contact-manager-backend-uxzr.onrender.com/api/contacts",
+        "https://contact-manager-backend-env-1.eba-ukwyne2h.ap-south-1.elasticbeanstalk.com/",
         {
           headers: {
             Authorization: `Bearer ${authToken}`,
@@ -96,7 +96,7 @@ function App() {
   };
   const addContactHandler = (contact) => {
     Axios.post(
-      "https://contact-manager-backend-uxzr.onrender.com/api/contacts",
+      "https://contact-manager-backend-env-1.eba-ukwyne2h.ap-south-1.elasticbeanstalk.com/",
       contact,
       {
         headers: {
@@ -122,7 +122,7 @@ function App() {
 
   const deleteContactHandler = (id) => {
     Axios.delete(
-      `https://contact-manager-backend-uxzr.onrender.com/api/contacts/${id}`,
+      `https://contact-manager-backend-env-1.eba-ukwyne2h.ap-south-1.elasticbeanstalk.com//${id}`,
       {
         headers: {
           Authorization: `Bearer ${authToken}`,
@@ -143,7 +143,7 @@ function App() {
       email: updatedContact.email,
     };
     Axios.put(
-      `https://contact-manager-backend-uxzr.onrender.com/api/contacts/${updatedContact.id}`,
+      `https://contact-manager-backend-env-1.eba-ukwyne2h.ap-south-1.elasticbeanstalk.com//${updatedContact.id}`,
       inputContact,
       {
         headers: {

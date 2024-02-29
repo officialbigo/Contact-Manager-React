@@ -18,7 +18,7 @@ const RegisterUser = () => {
     e.preventDefault();
     setLoading(true);
     Axios.post(
-      "https://contact-manager-backend-uxzr.onrender.com/api/users/register",
+      "https://contact-manager-backend-env-1.eba-ukwyne2h.ap-south-1.elasticbeanstalk.com/",
       formData
     )
       .then((res) => {
@@ -35,7 +35,7 @@ const RegisterUser = () => {
         if (error === 400) {
           alert("All fields are mandatory!");
         } else if (error === 401) {
-          alert("User with entered email exists!");
+          alert("User with email already exists!");
         }
       })
       .finally(() => {
