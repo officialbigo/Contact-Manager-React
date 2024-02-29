@@ -17,7 +17,7 @@ const RegisterUser = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-    Axios.post("https://contact-manager-backend-uxzr.onrender.com", formData)
+    Axios.post("https://contact-manager-backend-uxzr.onrender.com/api/users/register", formData)
       .then((res) => {
         alert(`New user ${res.data.name} created.`);
         setFormData({
