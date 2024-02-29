@@ -42,7 +42,7 @@ function App() {
       //   .catch((err) => {
       //     alert(err);
       //   });
-      Axios.get("https://contact-manager-backend-uxzr.onrender.com", {
+      Axios.get("https://contact-manager-backend-uxzr.onrender.com/api/contacts", {
         headers: {
           Authorization: `Bearer ${authToken}`,
         },
@@ -92,7 +92,7 @@ function App() {
     }
   };
   const addContactHandler = (contact) => {
-    Axios.post("https://contact-manager-backend-uxzr.onrender.com", contact, {
+    Axios.post("https://contact-manager-backend-uxzr.onrender.com/api/contacts/", contact, {
       headers: {
         Authorization: `Bearer ${authToken}`,
       },
@@ -114,7 +114,7 @@ function App() {
   };
 
   const deleteContactHandler = (id) => {
-    Axios.delete(`https://contact-manager-backend-uxzr.onrender.com/${id}`, {
+    Axios.delete(`https://contact-manager-backend-uxzr.onrender.com/api/contacts/${id}`, {
       headers: {
         Authorization: `Bearer ${authToken}`,
       },
@@ -133,7 +133,7 @@ function App() {
       email: updatedContact.email,
     };
     Axios.put(
-      `https://contact-manager-backend-uxzr.onrender.com/${updatedContact.id}`,
+      `https://contact-manager-backend-uxzr.onrender.com/api/contacts/${updatedContact.id}`,
       inputContact,
       {
         headers: {
