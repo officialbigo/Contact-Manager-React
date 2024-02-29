@@ -42,14 +42,11 @@ function App() {
       //   .catch((err) => {
       //     alert(err);
       //   });
-      Axios.get(
-        "https://contact-manager-backend-env-1.eba-ukwyne2h.ap-south-1.elasticbeanstalk.com/",
-        {
-          headers: {
-            Authorization: `Bearer ${authToken}`,
-          },
-        }
-      )
+      Axios.get("https://contact-manager-backend-uxzr.onrender.com", {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+      })
         .then((res) => {
           const initialContacts = res.data.map(
             ({ _id, name, number, email }) => ({
@@ -95,15 +92,11 @@ function App() {
     }
   };
   const addContactHandler = (contact) => {
-    Axios.post(
-      "https://contact-manager-backend-env-1.eba-ukwyne2h.ap-south-1.elasticbeanstalk.com/",
-      contact,
-      {
-        headers: {
-          Authorization: `Bearer ${authToken}`,
-        },
-      }
-    )
+    Axios.post("https://contact-manager-backend-uxzr.onrender.com", contact, {
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+      },
+    })
       .then((res) => {
         setContacts((prevContacts) => [
           ...prevContacts,
@@ -121,14 +114,11 @@ function App() {
   };
 
   const deleteContactHandler = (id) => {
-    Axios.delete(
-      `https://contact-manager-backend-env-1.eba-ukwyne2h.ap-south-1.elasticbeanstalk.com//${id}`,
-      {
-        headers: {
-          Authorization: `Bearer ${authToken}`,
-        },
-      }
-    ).catch((err) => {
+    Axios.delete(`https://contact-manager-backend-uxzr.onrender.com/${id}`, {
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+      },
+    }).catch((err) => {
       alert(err);
     });
     const new_contacts = contacts.filter((contact) => {
@@ -143,7 +133,7 @@ function App() {
       email: updatedContact.email,
     };
     Axios.put(
-      `https://contact-manager-backend-env-1.eba-ukwyne2h.ap-south-1.elasticbeanstalk.com//${updatedContact.id}`,
+      `https://contact-manager-backend-uxzr.onrender.com/${updatedContact.id}`,
       inputContact,
       {
         headers: {

@@ -31,10 +31,7 @@ const UserLogin = (props) => {
   };
   const handleSubmit = () => {
     setLoading(true);
-    Axios.post(
-      "https://contact-manager-backend-env-1.eba-ukwyne2h.ap-south-1.elasticbeanstalk.com/",
-      formVal
-    )
+    Axios.post("https://contact-manager-backend-uxzr.onrender.com", formVal)
       .then((res) => {
         const givenToken = res.data.accessToken;
         props.changeAuthToken(givenToken);

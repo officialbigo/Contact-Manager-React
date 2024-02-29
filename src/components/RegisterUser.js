@@ -17,10 +17,7 @@ const RegisterUser = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-    Axios.post(
-      "https://contact-manager-backend-env-1.eba-ukwyne2h.ap-south-1.elasticbeanstalk.com/",
-      formData
-    )
+    Axios.post("https://contact-manager-backend-uxzr.onrender.com", formData)
       .then((res) => {
         alert(`New user ${res.data.name} created.`);
         setFormData({
