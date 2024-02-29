@@ -31,7 +31,7 @@ const UserLogin = (props) => {
   };
   const handleSubmit = () => {
     setLoading(true);
-    Axios.post("https://contact-manager-backend-uxzr.onrender.com", formVal)
+    Axios.post("https://contact-manager-backend-uxzr.onrender.com/api/users/login", formVal)
       .then((res) => {
         const givenToken = res.data.accessToken;
         props.changeAuthToken(givenToken);
